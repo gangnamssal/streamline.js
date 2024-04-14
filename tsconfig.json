@@ -1,14 +1,20 @@
 {
-	"compilerOptions": {
-		"module": "commonjs",
-		"target": "ESNext",
-		"noImplicitAny": true,
-		"sourceMap": true,
-		"outDir": "dist",
-		"declaration": true,
-		"strict": true,
-		"types": ["jest"]
-	},
-	"include": ["src"],
-	"exclude": ["node_modules", "dist"]
+  "compilerOptions": {
+    "baseUrl": "/",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ESNext",
+    "noImplicitAny": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "declaration": true,
+    "strict": true,
+    "types": ["jest"],
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "downlevelIteration": true,
+    "esModuleInterop": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
