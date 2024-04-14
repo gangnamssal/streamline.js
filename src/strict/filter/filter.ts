@@ -1,5 +1,5 @@
-function filter<T>(f: (arg: T) => boolean, iter: Iterable<T>): Partial<T>[] {
-  let res: Partial<T>[] = [];
+function filter<T>(f: (arg: T) => boolean | number, iter: Iterable<T>): T[] {
+  let res: T[] = [];
 
   for (const a of iter) {
     if (f(a)) res.push(a);

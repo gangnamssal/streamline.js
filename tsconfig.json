@@ -13,7 +13,11 @@
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "downlevelIteration": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+
+    "paths": {
+      "@strict": ["src/strict"]
+    }
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

@@ -8,6 +8,13 @@ describe('filter', () => {
     expect(result).toEqual([2, 3]);
   });
 
+  it('array2', () => {
+    const arr = [1, 2, 3] as const;
+    const result = filter(a => a % 2 !== 0, arr);
+
+    expect(result).toEqual([1, 3]);
+  });
+
   it('set', () => {
     const set = new Set([1, 2, 3]);
     const result = filter(a => a > 1, set);
