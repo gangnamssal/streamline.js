@@ -1,15 +1,38 @@
 {
-  "name": "funcjs",
-  "author": "Tommy",
-  "version": "1.0.0",
+  "name": "streamlinejs",
+  "author": {
+    "name": "Tommy",
+    "email": "24691116@naver.com"
+  },
+  "version": "1.0.5",
   "description": "Type-inference capable functional programming.",
-  "main": "index.ts",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
-  "keywords": [],
-  "license": "ISC",
+  "keywords": [
+    "function",
+    "functional-programming",
+    "streamline",
+    "streamlinejs",
+    "node"
+  ],
+  "homepage": "https://github.com/gangnamssal/streamline.js",
+  "bugs": {
+    "url": "https://github.com/gangnamssal/streamline.js/issues",
+    "email": "24691116@naver.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gangnamssal/streamline.js"
+  },
+  "license": "(ISC OR MIT)",
+  "files": [
+    "dist",
+    "src"
+  ],
   "devDependencies": {
     "@types/jest": "^29.5.12",
     "eslint": "^8.57.0",

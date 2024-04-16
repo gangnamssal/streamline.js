@@ -2,23 +2,26 @@
   "compilerOptions": {
     "baseUrl": "/",
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "Node",
     "target": "ESNext",
     "noImplicitAny": true,
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "./dist",
+    "rootDir": "./src",
+
     "declaration": true,
     "strict": true,
     "types": ["jest"],
     "allowImportingTsExtensions": true,
-    "noEmit": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
     "downlevelIteration": true,
     "esModuleInterop": true,
 
     "paths": {
-      "@strict": ["src/strict"]
+      "@strict/*": ["src/*"]
     }
   },
-  "include": ["src"],
+  "include": ["src/*"],
   "exclude": ["node_modules", "dist"]
 }
