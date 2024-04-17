@@ -1,5 +1,5 @@
-import go from './go.ts';
-import reduce from '../reduce/reduce.ts';
+import go from './go';
+import reduce from '../reduce/reduce';
 
 describe('go', () => {
   it('go', () => {

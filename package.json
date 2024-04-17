@@ -4,9 +4,9 @@
     "name": "Tommy",
     "email": "24691116@naver.com"
   },
-  "version": "1.0.5",
+  "version": "1.0.28",
   "description": "Type-inference capable functional programming.",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "jest",
@@ -41,5 +41,12 @@
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.3"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
   }
 }

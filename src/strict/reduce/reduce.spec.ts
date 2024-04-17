@@ -1,4 +1,4 @@
-import reduce from './reduce.ts';
+import reduce from './reduce';
 
 describe('reduce', () => {
   it('콜백함수, 초기값, iterable이 다 주어졌을 때', () => {

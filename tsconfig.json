@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": "/",
-    "module": "ESNext",
-    "moduleResolution": "Node",
+    "module": "CommonJS",
     "target": "ESNext",
     "noImplicitAny": true,
     "sourceMap": true,
@@ -12,16 +11,13 @@
     "declaration": true,
     "strict": true,
     "types": ["jest"],
-    "allowImportingTsExtensions": true,
-    "emitDeclarationOnly": true,
-    "noEmit": false,
+
     "downlevelIteration": true,
     "esModuleInterop": true,
-
-    "paths": {
-      "@strict/*": ["src/*"]
-    }
+    "allowJs": true,
+    "checkJs": true,
+    "noEmitOnError": true
   },
-  "include": ["src/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": ["src/index.ts"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

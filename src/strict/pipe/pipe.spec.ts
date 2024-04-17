@@ -1,7 +1,7 @@
-import filter from '../filter/filter.ts';
-import map from '../map/map.ts';
-import reduce from '../reduce/reduce.ts';
-import pipe from './pipe.ts';
+import filter from '../filter/filter';
+import map from '../map/map';
+import reduce from '../reduce/reduce';
+import pipe from './pipe';
 
 describe('Pipe', () => {
   it('인수가 하나만 주어질 때', () => {

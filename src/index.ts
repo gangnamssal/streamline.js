@@ -1,1 +1,1 @@
-export * from './strict';
+export * from './strict/index';
