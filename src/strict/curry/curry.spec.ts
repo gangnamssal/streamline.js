@@ -1,4 +1,4 @@
-import curry from './curry.ts';
+import curry from './curry';
 
 describe('curry', () => {
   it('should curry a function', () => {

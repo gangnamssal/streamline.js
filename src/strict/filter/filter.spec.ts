@@ -1,4 +1,4 @@
-import filter from './filter.ts';
+import filter from './filter';
 
 describe('filter', () => {
   it('array', () => {

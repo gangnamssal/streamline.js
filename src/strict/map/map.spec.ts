@@ -1,4 +1,4 @@
-import map from './map.ts';
+import map from './map';
 
 describe('map', () => {
   it('array', () => {

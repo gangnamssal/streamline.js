@@ -1,3 +1,5 @@
+function reduce<U, T>(f: (acc: U, val: T) => U, acc: Iterable<T>): U;
+function reduce<U, T>(f: (acc: U, val: T) => U, acc: U, iter: Iterable<T>): U;
 function reduce<U, T>(f: (acc: U, val: T) => U, acc: U | Iterable<T>, iter?: Iterable<T>): U {
   if (!iter) {
     if (isIterable(acc)) {

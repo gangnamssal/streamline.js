@@ -31,4 +31,17 @@ describe('go', () => {
 
     expect(addAndMultiply).toBe(15);
   });
+
+  it('go 활용 예제 3', () => {
+    const arr = [1, 2, 3, 4, 5];
+
+    const addAndMultiply = go(arr, arr =>
+      reduce<Record<number, number> | number, number>((a, b) => {
+        if (typeof a === 'number') return { [a]: a };
+        return { ...a, [b]: b };
+      }, arr),
+    );
+
+    expect(addAndMultiply).toEqual({ '1': 1, '3': 3, '4': 4, '5': 5 });
+  });
 });
