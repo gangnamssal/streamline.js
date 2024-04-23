@@ -25,9 +25,9 @@ describe('Pipe', () => {
   });
 
   it('pipe 활용', () => {
-    const f = pipe<number[], number[]>(
-      a => map(a => a + 1, a),
-      a => filter(a => a % 2, a),
+    const f = pipe<number[], number>(
+      a => map((a: number) => a + 1, a),
+      a => filter((a: number) => a % 2, a),
       a => reduce<number, number>((a, b) => a + b, a),
     );
 

@@ -1,5 +1,6 @@
 import go from './go';
 import reduce from '../reduce/reduce';
+import curry from '../curry/curry';
 
 describe('go', () => {
   it('go', () => {
@@ -24,6 +25,14 @@ describe('go', () => {
     expect(addAndMultiply).toBe(9);
   });
 
+  it('go 활용 예제 1 with curry', () => {
+    const add = curry((a: number, b: number) => a + b);
+    const multiply = curry((a: number, b: number) => a * b);
+
+    const addAndMultiply = go(1, add(2), multiply(3));
+    expect(addAndMultiply).toBe(9);
+  });
+
   it('go 활용 예제 2', () => {
     const arr = [1, 2, 3, 4, 5];
 
@@ -36,7 +45,7 @@ describe('go', () => {
     const arr = [1, 2, 3, 4, 5];
 
     const addAndMultiply = go(arr, arr =>
-      reduce<Record<number, number> | number, number>((a, b) => {
+      reduce<Record<number, number>, number>((a, b) => {
         if (typeof a === 'number') return { [a]: a };
         return { ...a, [b]: b };
       }, arr),
