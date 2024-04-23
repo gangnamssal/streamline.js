@@ -4,7 +4,7 @@
     "name": "Tommy",
     "email": "24691116@naver.com"
   },
-  "version": "1.0.30",
+  "version": "1.1.0",
   "description": "Type-inference capable functional programming.",
   "main": "./dist/index.js",
   "scripts": {
