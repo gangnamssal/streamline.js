@@ -4,3 +4,6 @@ export { default as reduce } from './reduce/reduce';
 export { default as pipe } from './pipe/pipe';
 export { default as go } from './go/go';
 export { default as curry } from './curry/curry';
+export { default as take } from './take/take';
+export { default as takeAll } from './takeAll/takeAll';
+export { default as range } from './range/range';
