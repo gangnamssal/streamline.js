@@ -1,6 +1,4 @@
-import curry from '../curry/curry';
-
-const take = curry(<T>(limit: number, iter: Iterable<T>) => {
+const take = <T>(limit: number, iter: Iterable<T>) => {
   const res: T[] = [];
 
   for (const a of iter) {
@@ -10,6 +8,6 @@ const take = curry(<T>(limit: number, iter: Iterable<T>) => {
   }
 
   return res;
-});
+};
 
 export default take;
