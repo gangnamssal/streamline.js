@@ -1,7 +1,9 @@
 import reduce from '../reduce/reduce';
 
-function go<U extends T, T>(...args: [U, ...Array<(arg: U) => T>]): T {
-  return reduce((a, f) => f(a), args[0], args.slice(1) as Array<(arg: U) => U>);
+function go<T>(arg: T, ...fns: Array<(arg: T) => T>): T;
+function go<T, R>(arg: T, ...fns: Array<(arg: T) => R>): R;
+function go(arg: any, ...fns: Array<(arg: any) => any>): any {
+  return reduce((a, f) => f(a), arg, fns);
 }
 
 export default go;

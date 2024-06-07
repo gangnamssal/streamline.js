@@ -1,25 +1,27 @@
-function reduce<U, T>(f: (acc: U, val: T) => U, acc: Iterable<T>): U;
-function reduce<U, T>(f: (acc: U, val: T) => U, acc: U, iter: Iterable<T>): U;
-function reduce<U, T>(f: (acc: U, val: T) => U, acc: U | Iterable<T>, iter?: Iterable<T>): U {
+function reduce<T, Acc>(fn: (acc: Acc, value: T) => Acc, acc: Acc, iter: Iterable<T>): Acc;
+function reduce<T, Acc>(fn: (acc: Acc, value: T) => Acc, acc: Iterable<T>): Acc;
+function reduce<T, Acc>(fn: (acc: Acc, value: T) => Acc, acc: Acc | Iterable<T>, iter?: Iterable<T>): Acc {
+  let result: Acc;
+
   if (!iter) {
-    if (isIterable(acc)) {
-      iter = acc[Symbol.iterator]() as IterableIterator<T>;
-      acc = (iter as IterableIterator<T>).next().value;
-    } else {
-      throw new TypeError('acc is not iterable');
+    const iterator = (acc as Iterable<T>)[Symbol.iterator]();
+    let { value, done } = iterator.next();
+    if (done) return value as Acc;
+    result = value as unknown as Acc;
+    while (!done) {
+      ({ value, done } = iterator.next());
+      if (!done) {
+        result = fn(result, value);
+      }
+    }
+  } else {
+    result = acc as Acc;
+    for (const value of iter) {
+      result = fn(result, value);
     }
   }
 
-  let iterable = iter[Symbol.iterator]() as IterableIterator<T>;
-  let result: U = acc as U;
-
-  for (const a of iterable) result = f(result, a);
-
   return result;
-}
-
-function isIterable<T>(obj: any): obj is Iterable<T> {
-  return obj != null && typeof obj[Symbol.iterator] === 'function';
 }
 
 export default reduce;
