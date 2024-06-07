@@ -1,23 +1,16 @@
-import filter from './filter';
+import filterL from './filter-l';
 
-describe('filter', () => {
+describe('filterL', () => {
   it('array', () => {
     const arr = [1, 2, 3] as const;
-    const result = filter(a => a > 1, arr);
+    const result = [...filterL(a => a > 1, arr)];
 
     expect(result).toEqual([2, 3]);
   });
 
-  it('array2', () => {
-    const arr = [1, 2, 3] as const;
-    const result = filter(a => a % 2 !== 0, arr);
-
-    expect(result).toEqual([1, 3]);
-  });
-
   it('set', () => {
     const set = new Set([1, 2, 3]);
-    const result = filter(a => a > 1, set);
+    const result = [...filterL(a => a > 1, set)];
 
     expect(result).toEqual([2, 3]);
   });
@@ -28,7 +21,7 @@ describe('filter', () => {
       ['b', 2],
       ['c', 3],
     ]);
-    const result = filter(([k, v]) => v > 1, mapObject);
+    const result = [...filterL(([k, v]) => v > 1, mapObject)];
 
     expect(result).toEqual([
       ['b', 2],

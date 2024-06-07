@@ -1,13 +1,7 @@
-const take = <T>(limit: number, iter: Iterable<T>) => {
-  const res: T[] = [];
+import { takeL } from '../../lazy';
 
-  for (const a of iter) {
-    if (res.length === limit) return res;
-
-    res.push(a);
-  }
-
-  return res;
-};
+function take<T>(limit: number, iter: Iterable<T>) {
+  return [...takeL(limit, iter)];
+}
 
 export default take;
