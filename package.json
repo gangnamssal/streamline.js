@@ -32,9 +32,7 @@
   },
   "license": "(ISC OR MIT)",
   "files": [
-    "src/lazy/index.ts",
-    "src/strict/index.ts",
-    "src/curry/index.ts"
+    "dist"
   ],
   "devDependencies": {
     "@types/jest": "^29.5.12",
@@ -46,22 +44,25 @@
     "typescript": "^5.4.3"
   },
   "exports": {
+    "./curry": {
+      "types": "./dist/curry/index.d.ts",
+      "import": "./dist/curry/index.js",
+      "require": "./dist/curry/index.cjs"
+    },
+    "./lazy": {
+      "types": "./dist/lazy/index.d.ts",
+      "import": "./dist/lazy/index.js",
+      "require": "./dist/lazy/index.cjs"
+    },
+    "./strict": {
+      "types": "./dist/strict/index.d.ts",
+      "import": "./dist/strict/index.js",
+      "require": "./dist/strict/index.cjs"
+    },
     ".": {
-      "types": [
-        "./dist/curry/index.d.ts",
-        "./dist/lazy/index.d.ts",
-        "./dist/strict/index.d.ts"
-      ],
-      "import": [
-        "./dist/curry/index.js",
-        "./dist/lazy/index.js",
-        "./dist/strict/index.js"
-      ],
-      "require": [
-        "./dist/curry/index.cjs",
-        "./dist/lazy/index.cjs",
-        "./dist/strict/index.cjs"
-      ]
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     }
   }
 }
