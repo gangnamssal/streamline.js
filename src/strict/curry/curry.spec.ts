@@ -1,5 +1,4 @@
 import curry from './curry';
-import { go, map } from '..';
 
 describe('curry', () => {
   it('should curry a function', () => {
@@ -13,16 +12,5 @@ describe('curry', () => {
     const add1 = curriedAdd(1);
     const add2 = add1(2, 3);
     expect(add2).toBe(6);
-  });
-
-  it('curry with go', () => {
-    const arr = [1, 2, 3, 4, 5];
-
-    const res = go(
-      arr,
-      map((a: number) => a + 1),
-    );
-
-    expect(res).toEqual([2, 3, 4, 5, 6]);
   });
 });

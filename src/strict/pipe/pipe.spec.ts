@@ -5,7 +5,7 @@ import filter from '../filter/filter';
 
 describe('Pipe', () => {
   it('인수가 하나만 주어질 때', () => {
-    const f = pipe(
+    const f = pipe<number>(
       (a: number) => a + 1,
       (a: number) => a + 10,
       (a: number) => a + 100,
@@ -15,7 +15,7 @@ describe('Pipe', () => {
   });
 
   it('인수가 두 개 주어질 때', () => {
-    const f = pipe(
+    const f = pipe<number>(
       (a, b) => a + b,
       a => a + 10,
       a => a + 100,
@@ -25,7 +25,7 @@ describe('Pipe', () => {
   });
 
   it('pipe 활용2', () => {
-    const f = pipe((a: number[]) => reduce((a: number, b: number) => a + b, a));
+    const f = pipe<number>((a: number[]) => reduce((a: number, b: number) => a + b, a));
 
     expect(f([1, 2, 3, 4, 5])).toBe(15);
   });

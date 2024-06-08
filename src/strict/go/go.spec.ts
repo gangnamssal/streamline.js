@@ -16,7 +16,7 @@ describe('go', () => {
     const add = (a: number, b: number) => a + b;
     const multiply = (a: number, b: number) => a * b;
 
-    const addAndMultiply = go(
+    const addAndMultiply = go<number>(
       1,
       a => add(a, 2),
       a => multiply(a, 3),
@@ -27,7 +27,7 @@ describe('go', () => {
   it('go 활용 예제 2', () => {
     const arr = [1, 2, 3, 4, 5];
 
-    const addAndMultiply = go(arr, arr => reduce((a: number, b: number) => a + b, arr));
+    const addAndMultiply = go<number>(arr, arr => reduce((a: number, b: number) => a + b, arr));
 
     expect(addAndMultiply).toBe(15);
   });
@@ -35,7 +35,7 @@ describe('go', () => {
   it('go 활용 예제 3', () => {
     const arr = [1, 2, 3, 4, 5];
 
-    const addAndMultiply = go(arr, arr =>
+    const addAndMultiply = go<Record<string, number>>(arr, arr =>
       reduce((a: Record<string, number>, b: number) => {
         if (typeof a === 'number') return { [a]: a };
         return { ...a, [b]: b };
