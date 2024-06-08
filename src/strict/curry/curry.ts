@@ -1,16 +1,28 @@
-function curry<F extends (...args: any[]) => any>(
-  func: F,
-): <T extends any[]>(
-  ...args: T
-) => T['length'] extends Parameters<F>['length'] ? ReturnType<F> : (...args2: any[]) => ReturnType<F> {
-  return (...args: any[]) => {
-    if (args.length >= func.length) {
-      return func(...args);
-    } else {
-      return (...args2: any[]) => curry(func)(...args, ...args2);
-    }
-  };
-}
+const curry =
+  (f: (...args: any[]) => any) =>
+  (a: any, ..._: any[]) =>
+    _.length ? f(a, ..._) : (..._: any[]) => f(a, ..._);
+
+// type Curry = <T, U>(f: (a: T, ...args: U[]) => any) => (a: T) => (...args: U[]) => any;
+
+// const curry: Curry =
+//   f =>
+//   (a, ..._) =>
+//     _.length ? f(a, ..._) : (..._) => f(a, ..._);
+
+// function curry<F extends (...args: any[]) => any>(
+//   func: F,
+// ): <T extends any[]>(
+//   ...args: T
+// ) => T['length'] extends Parameters<F>['length'] ? ReturnType<F> : (...args2: any[]) => ReturnType<F> {
+//   return (...args: any[]) => {
+//     if (args.length >= func.length) {
+//       return func(...args);
+//     } else {
+//       return (...args2: any[]) => curry(func)(...args, ...args2);
+//     }
+//   };
+// }
 
 // const curry =
 //   <R>(f: (...args: any[]) => R) =>
