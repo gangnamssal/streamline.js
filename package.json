@@ -4,7 +4,7 @@
     "name": "Tommy",
     "email": "24691116@naver.com"
   },
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Type-inference capable functional programming.",
   "scripts": {
     "build": "tsc",
