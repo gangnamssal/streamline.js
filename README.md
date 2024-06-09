@@ -28,6 +28,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 
 [5.Strict](#usage---strict)
 
+- [at](#at)
 - [curry](#curry)
 - [filter](#filter)
 - [go](#go)
@@ -359,6 +360,29 @@ console.log(iterator.next()); // { value: undefined, done: true }
 ## Usage - Strict
 
 Strict 함수는 Lazy 함수를 기반으로 구현됩니다.
+
+### at
+
+- 주어진 배열에서 주어진 인덱스에 있는 요소를 반환합니다. 인덱스가 유효하지 않을 경우 undefined를 반환합니다.
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const iter = [1, 2, 3, 4, 5];
+const index = 2;
+const result = _.at(index, iter);
+
+console.log(result); // 3
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const arr = [1, 2, 3, 4, 5];
+const res = go<number>(arr, arr => at(-1, arr));
+
+console.log(res); // 5
+```
 
 ### curry
 

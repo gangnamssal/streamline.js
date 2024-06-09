@@ -4,3 +4,4 @@ export { default as filterL } from './filter-l/filter-l';
 export { default as takeL } from './take-l/take-l';
 export { default as reduceL } from './reduce-l/reduce-l';
 export { default as flatL } from './flat-l/flat-l';
+export { default as atL } from './at-l/at-l';
