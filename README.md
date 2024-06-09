@@ -208,9 +208,13 @@ import * as L from 'streamlinejs/lazy';
 
 const arr = [1, 2, 3, 4, 5];
 const index = 2;
-const result = [...L.atL(index, arr)];
 
-console.log(result); // [3]
+const res = L.atL(index, arr);
+const iterator = res[Symbol.iterator]();
+
+console.log([...res]); // [3]
+console.log(iterator.next()); // { value: 3, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
 ```
 
 ```tsx
@@ -280,7 +284,16 @@ import * as L from 'streamlinejs/lazy';
 const arr = [1, [2, 3], [[4], [5, 6]]];
 const res = L.flatL<number>(arr);
 
-console.log(res); // [1, 2, 3, 4, 5, 6]
+const iterator = res[Symbol.iterator]();
+
+console.log([...res]); // [1, 2, 3, 4, 5, 6]
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: 2, done: false }
+console.log(iterator.next()); // { value: 3, done: false }
+console.log(iterator.next()); // { value: 4, done: false }
+console.log(iterator.next()); // { value: 5, done: false }
+console.log(iterator.next()); // { value: 6, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
 ```
 
 ### mapL
