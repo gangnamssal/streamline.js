@@ -201,7 +201,8 @@ _.go<number[]>(arr, arr => L.filterL((a: number) => a % 2 === 0, arr), _.takeAll
 
 ### flatL
 
-- 중첩된 배열을 평탄화하여 단일 배열로 만듭니다.
+- 중첩된 배열을 평탄화하여 지연 평가로 반환합니다.
+- 이터러블/이터레이터를 반환합니다.
 
 ```tsx
 import * as L from 'streamlinejs/lazy';
@@ -314,6 +315,8 @@ console.log(iterator.next()); // { value: undefined, done: true }
 ```
 
 ## Usage - Strict
+
+Strict 함수는 Lazy 함수를 기반으로 구현됩니다.
 
 ### curry
 
@@ -466,6 +469,28 @@ _.go(_.range(1, 10), arr => _.take(5, arr), console.log); // [1, 2, 3, 4, 5]
 import * as _ from 'streamlinejs/strict';
 
 _.go(_.range(1, 10), arr => _.takeAll(arr), console.log); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+### flat
+
+- 중첩된 배열을 평탄화하여 단일 배열로 만듭니다.
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.flat([[], [[]], [[], []], [[], 1], [[2], []], [[], [3]], []]);
+
+console.log(res); // [1, 2, 3]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const arr = [[1], [2, 3], [4, 5, 6]];
+
+const res = _.go(arr, _.flat);
+
+console.log(res); // [1, 2, 3, 4, 5, 6]
 ```
 
 ## License

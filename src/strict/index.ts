@@ -7,3 +7,4 @@ export { default as curry } from './curry/curry';
 export { default as take } from './take/take';
 export { default as takeAll } from './takeAll/takeAll';
 export { default as range } from './range/range';
+export { default as flat } from './flat/flat';
