@@ -21,4 +21,14 @@ describe('rangeL', () => {
     const result = take(5, rangeL(8, 3, -2));
     expect(result).toEqual([8, 6, 4]);
   });
+
+  it('start가 stop보다 크고 step이 양수일 때', () => {
+    const result = take(5, rangeL(8, 3, 2));
+    expect(result).toEqual([8, 6, 4]);
+  });
+
+  it('step이 부동소수가 될 때', () => {
+    const result = take(5, rangeL(8, 7, 2));
+    expect(result).toEqual([8]);
+  });
 });
