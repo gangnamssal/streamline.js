@@ -18,6 +18,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 
 [4.Lazy](#usage---lazy)
 
+- [atL](#atl)
 - [filterL](#filterl)
 - [flatL](#flatl)
 - [mapL](#mapl)
@@ -168,6 +169,47 @@ _.go<number[]>(arr, C.takeC(3), console.log); // [1, 2, 3]
 ```
 
 ## Usage - Lazy
+
+### atL
+
+- 지연 평가를 사용하여 인덱스가 주어진 값과 일치하는 요소를 반환합니다. 필요한 요소를 평가할 때까지 평가가 지연됩니다.
+- 이터러블/이터레이터를 반환합니다.
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const arr = [1, 2, 3, 4, 5];
+const index = 2;
+const result = [...L.atL(index, arr)];
+
+console.log(result); // [3]
+```
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const arr = [1, 2, 3, 4, 5];
+const index = -1;
+const result = [...L.atL(index, arr)];
+
+console.log(result); // [5]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+import * as L from 'streamlinejs/lazy';
+
+const arr = [1, 2, 3, 4, 5];
+
+const res = _.go<number>(
+  arr,
+  arr => L.reduceL((a: number, b: number) => a + b, arr),
+  arr => L.atL(-1, arr),
+  _.takeAll,
+);
+
+console.log(res); // [15]
+```
 
 ### filterL
 
