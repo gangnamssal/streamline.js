@@ -32,6 +32,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 [5.Strict](#usage---strict)
 
 - [at](#at)
+- [chunk](#chunk)
 - [curry](#curry)
 - [filter](#filter)
 - [go](#go)
@@ -465,6 +466,18 @@ const arr = [1, 2, 3, 4, 5];
 const res = go<number>(arr, arr => at(-1, arr));
 
 console.log(res); // 5
+```
+
+### chunk
+
+- 주어진 크기로 배열을 나누어 청크를 반환합니다.
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.chunk(2, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+console.log(res); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
 ```
 
 ### curry

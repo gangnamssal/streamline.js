@@ -10,3 +10,4 @@ export { default as range } from './range/range';
 export { default as flat } from './flat/flat';
 export { default as at } from './at/at';
 export { default as join } from './join/join';
+export { default as chunk } from './chunk/chunk';
