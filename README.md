@@ -33,6 +33,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [curry](#curry)
 - [filter](#filter)
 - [go](#go)
+- [join](#join)
 - [map](#map)
 - [pipe](#pipe)
 - [range](#range)
@@ -482,6 +483,33 @@ const addAndMultiply = _.go<Record<string, number>>(arr, arr =>
 );
 
 console.log(addAndMultiply); // { '1': 1, '3': 3, '4': 4, '5': 5 }
+```
+
+### join
+
+- 배열의 모든 요소를 문자열로 변환하고, 주어진 구분자를 사용하여 결합합니다.
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const result = _.join('', [1, 2, 3]);
+
+console.log(result); // '123'
+```
+
+```tsx
+import * as C from 'streamlinejs/curry';
+import * as _ from 'streamlinejs/strict';
+
+const obj = { a: 1, b: 2, c: 3 };
+
+const res = _.go(
+  Object.entries(obj),
+  C.mapC(([k, v]: [string, number]) => `${k}=${v}`),
+  arr => _.join('&', arr),
+);
+
+console.log(res); // 'a=1&b=2&c=3'
 ```
 
 ### map
