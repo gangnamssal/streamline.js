@@ -8,8 +8,17 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 [2.Main Function](#main-function)
 
 [3.Curry](#usage---curry)
+- [filterC](#filterc)
+- [mapC](#mapc)
+- [reduceC](#reducec)
+- [takeC](#takec)
 
 [4.Lazy](#usage---lazy)
+- [filterL](#filterl)
+- [mapL](#mapl)
+- [rangeL](#rangel)
+- [reduceL](#reducel)
+- [takeL](#takel)
 
 [5.Strict](#usage---strict)
 
@@ -43,7 +52,8 @@ pnpm install streamlinejs
 
 ## Usage - Curry
 
-- **filterC**
+### filterC
+- 주어진 조건을 만족하는 요소만을 반환합니다.
 ```tsx
 import * as C from 'streamlinejs/curry';
 
@@ -65,7 +75,8 @@ _.go<number[]>(
   console.log // [2, 4]
 );
 ```
-- **mapC**
+### mapC 
+- 각 요소에 주어진 함수를 적용하여 새로운 배열을 반환합니다.
 ```tsx
 import * as C from 'streamlinejs/curry';
 
@@ -87,7 +98,8 @@ _.go<number[]>(
   console.log, // [2, 4, 6, 8, 10]
 );
 ```
-- **reduceC**
+### reduceC
+- 배열의 각 요소에 대해 주어진 함수를 적용하여 단일 누적 값을 반환합니다.
 ```tsx
 import * as C from 'streamlinejs/curry';
 
@@ -109,7 +121,8 @@ _.go<number>(
   console.log, // 15
 );
 ```
-- **takeC**
+### takeC
+- 배열의 앞에서부터 지정된 개수만큼 요소를 반환합니다.
 ```tsx
 import * as C from 'streamlinejs/curry';
 
@@ -128,6 +141,138 @@ _.go<number[]>(arr, C.takeC(3), console.log); // [1, 2, 3]
 ```
 
 ## Usage - Lazy
+
+### filterL
+-  조건을 만족하는 요소만을 지연 평가로 반환합니다.
+-  이터러블/이터레이터를 반환합니다.
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const arr = [1, 2, 3, 4, 5];
+const res = L.filterL((x: number) => x % 2 === 0, arr);
+
+const iterator = res[Symbol.iterator]();
+
+console.log([...res]); // [2, 4]
+console.log(iterator.next()); // { value: 2, done: false }
+console.log(iterator.next()); // { value: 4, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+```
+
+```tsx
+// filterL with go
+
+import * as _ from 'streamlinejs/strict';
+import * as L from 'streamlinejs/lazy';
+
+const arr = [1, 2, 3, 4, 5];
+
+_.go<number[]>(
+  arr,
+  (arr) => L.filterL((a: number) => a % 2 === 0, arr),
+  _.takeAll,
+  console.log
+); // [2, 4]
+```
+
+### mapL
+- 각 요소에 주어진 함수를 지연 평가로 적용하여 새로운 요소를 반환합니다.
+- 이터러블/이터레이터를 반환합니다.
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const arr = [1, 2, 3, 4, 5];
+
+const res = L.mapL((x) => x * 2, arr);
+const iterator = res[Symbol.iterator]();
+
+console.log([...res]); // [2, 4, 6, 8, 10]
+console.log(iterator.next()); // { value: 2, done: false }
+console.log(iterator.next()); // { value: 4, done: false }
+console.log(iterator.next()); // { value: 6, done: false }
+console.log(iterator.next()); // { value: 8, done: false }
+console.log(iterator.next()); // { value: 10, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+```
+
+```tsx
+// mapL with go
+
+import * as _ from 'streamlinejs/strict';
+import * as L from 'streamlinejs/lazy';
+
+const arr = [1, 2, 3, 4, 5];
+
+_.go<number[]>(
+  arr,
+  (arr) => L.mapL((a: number) => a * 2, arr),
+  _.takeAll,
+  console.log
+); // [2, 4, 6, 8, 10]
+```
+
+### rangeL
+- 주어진 범위의 숫자를 지연 평가로 생성하여 반환합니다.
+- 이터러블/이터레이터를 반환합니다.
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const res = L.rangeL(1, 5);
+const iterator = res[Symbol.iterator]();
+
+console.log([...res]); // [ 1, 2, 3, 4, 5 ]
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: 2, done: false }
+console.log(iterator.next()); // { value: 3, done: false }
+console.log(iterator.next()); // { value: 4, done: false }
+console.log(iterator.next()); // { value: 5, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+```
+
+```tsx
+console.log([...L.rangeL(10)]); // [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+console.log([...L.rangeL(5, 2)]); // [5, 4, 3]
+console.log([...L.rangeL(1, 10, 2)]); // [1, 3, 5, 7, 9]
+console.log([...L.rangeL(8, 3, 2)]); // [8, 6, 4]
+console.log([...L.rangeL(8, 3, -2)]); // [8, 6, 4]
+```
+
+### reduceL
+- 배열의 각 요소에 대해 주어진 함수를 지연 평가로 적용하여 단일 누적 값을 반환합니다.
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const arr = [1, 2, 3, 4, 5];
+const res = L.reduceL((acc: number, x: number) => acc + x, 0, arr);
+const iterator = res[Symbol.iterator]();
+
+console.log([...res]); // [1, 3, 6, 10, 15]
+console.log([...res].at(-1)); // 15
+
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: 3, done: false }
+console.log(iterator.next()); // { value: 6, done: false }
+console.log(iterator.next()); // { value: 10, done: false }
+console.log(iterator.next()); // { value: 15, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+```
+
+### takeL
+- 지연 평가로 배열의 앞에서부터 지정된 개수만큼 요소를 반환합니다.
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const arr = [1, 2, 3, 4, 5];
+
+const res = L.takeL(2, arr);
+const iterator = res[Symbol.iterator]();
+
+console.log([...res]); // [1, 2]
+console.log(iterator.next()); // { value: 1, done: false }
+console.log(iterator.next()); // { value: 2, done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+```
 
 ## Usage - Strict
 
