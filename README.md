@@ -19,6 +19,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 [4.Lazy](#usage---lazy)
 
 - [filterL](#filterl)
+- [flatL](#flatl)
 - [mapL](#mapl)
 - [rangeL](#rangel)
 - [reduceL](#reducel)
@@ -196,6 +197,19 @@ import * as L from 'streamlinejs/lazy';
 const arr = [1, 2, 3, 4, 5];
 
 _.go<number[]>(arr, arr => L.filterL((a: number) => a % 2 === 0, arr), _.takeAll, console.log); // [2, 4]
+```
+
+### flatL
+
+- 중첩된 배열을 평탄화하여 단일 배열로 만듭니다.
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const arr = [1, [2, 3], [[4], [5, 6]]];
+const res = L.flatL<number>(arr);
+
+console.log(res); // [1, 2, 3, 4, 5, 6]
 ```
 
 ### mapL
