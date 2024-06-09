@@ -11,6 +11,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 
 [3.Curry](#usage---curry)
 
+- [atC](#atc)
 - [filterC](#filterc)
 - [mapC](#mapc)
 - [reduceC](#reducec)
@@ -69,6 +70,32 @@ pnpm install streamlinejs
 - 엄격 평가(Strict Evaluation): 즉시 계산을 수행하여 결과를 반환합니다.
 
 ## Usage - Curry
+
+### atC
+
+- 주어진 배열에서 주어진 인덱스에 있는 요소를 반환합니다.
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const iter = [1, 2, 3, 4, 5];
+const index = 2;
+const result = C.atC(index)(iter);
+
+console.log(result); // 3
+```
+
+```tsx
+// atC with go
+
+import * as _ from 'streamlinejs/strict';
+import * as C from 'streamlinejs/curry';
+
+const arr = [1, 2, 3, 4, 5];
+const res = _.go<number>(arr, atC(-1));
+
+console.log(res); // 5
+```
 
 ### filterC
 
