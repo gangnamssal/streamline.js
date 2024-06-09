@@ -5,3 +5,4 @@ export { default as takeL } from './take-l/take-l';
 export { default as reduceL } from './reduce-l/reduce-l';
 export { default as flatL } from './flat-l/flat-l';
 export { default as atL } from './at-l/at-l';
+export { default as chunkL } from './chunk-l/chunk-l';

@@ -21,6 +21,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 [4.Lazy](#usage---lazy)
 
 - [atL](#atl)
+- [chunkL](#chunkl)
 - [filterL](#filterl)
 - [flatL](#flatl)
 - [mapL](#mapl)
@@ -143,7 +144,7 @@ import * as _ from 'streamlinejs/strict';
 
 const obj = { a: 1, b: 2, c: 3 };
 
-const res = _.go(
+const res = _.go<string>(
   Object.entries(obj),
   C.mapC(([k, v]: [string, number]) => `${k}=${v}`),
   C.joinC('&'),
@@ -270,6 +271,19 @@ const res = _.go<number>(
 );
 
 console.log(res); // [15]
+```
+
+### chunkL
+
+- 주어진 크기로 배열을 나누어 지연 평가된 청크를 반환합니다.
+- 이터러블/이터레이터를 반환합니다.
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const res = L.chunkL(2, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+console.log([...res]); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
 ```
 
 ### filterL
