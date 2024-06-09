@@ -13,6 +13,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 
 - [atC](#atc)
 - [filterC](#filterc)
+- [joinC](#joinc)
 - [mapC](#mapc)
 - [reduceC](#reducec)
 - [takeC](#takec)
@@ -122,6 +123,33 @@ _.go<number[]>(
   C.filterC((x: number) => x % 2 === 0),
   console.log, // [2, 4]
 );
+```
+
+### joinC
+
+- 배열의 모든 요소를 문자열로 변환하고, 주어진 구분자를 사용하여 결합합니다.
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const result = joinC('-', [1, 2, 3]);
+
+console.log(result); // '1-2-3'
+```
+
+```tsx
+import * as C from 'streamlinejs/curry';
+import * as _ from 'streamlinejs/strict';
+
+const obj = { a: 1, b: 2, c: 3 };
+
+const res = _.go(
+  Object.entries(obj),
+  C.mapC(([k, v]: [string, number]) => `${k}=${v}`),
+  C.joinC('&'),
+);
+
+console.log(res); // 'a=1&b=2&c=3'
 ```
 
 ### mapC
