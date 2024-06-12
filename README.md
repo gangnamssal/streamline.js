@@ -86,8 +86,10 @@ import * as C from 'streamlinejs/curry';
 const iter = [1, 2, 3, 4, 5];
 const index = 2;
 const result = C.atC(index)(iter);
+const result2 = C.atC(index, iter);
 
 console.log(result); // 3
+console.log(result2); // 3
 ```
 
 ```tsx
@@ -108,6 +110,19 @@ console.log(res); // 5
 
 ```tsx
 import * as C from 'streamlinejs/curry';
+
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+const res = C.chunkC(2)([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+const res2 = C.chunkC(3, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+console.log(res); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
+```
+
+```tsx
+// chunkC with go
+
+import * as C from 'streamlinejs/curry';
 import * as _ from 'streamlinejs/strict';
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -126,6 +141,7 @@ import * as C from 'streamlinejs/curry';
 
 const arr = [1, 2, 3, 4, 5];
 const res = C.filterC((x: number) => x % 2 === 0, arr);
+
 console.log(res); // [2, 4]
 ```
 
@@ -156,6 +172,7 @@ console.log(result); // '1-2-3'
 ```
 
 ```tsx
+// joinC with go
 import * as C from 'streamlinejs/curry';
 import * as _ from 'streamlinejs/strict';
 
@@ -205,6 +222,7 @@ import * as C from 'streamlinejs/curry';
 
 const arr = [1, 2, 3, 4, 5];
 const res = C.reduceC((acc: number, x: number) => acc + x, 0, arr);
+
 console.log(res); // 15
 ```
 
@@ -231,6 +249,7 @@ import * as C from 'streamlinejs/curry';
 
 const arr = [1, 2, 3, 4, 5];
 const res = C.takeC(3, arr);
+
 console.log(res); // [1, 2, 3]
 ```
 
@@ -240,6 +259,7 @@ import * as C from 'streamlinejs/curry';
 import * as _ from 'streamlinejs/strict';
 
 const arr = [1, 2, 3, 4, 5];
+
 _.go<number[]>(arr, C.takeC(3), console.log); // [1, 2, 3]
 ```
 
@@ -275,6 +295,7 @@ console.log(result); // [5]
 ```
 
 ```tsx
+// atL with go
 import * as _ from 'streamlinejs/strict';
 import * as L from 'streamlinejs/lazy';
 
@@ -324,7 +345,6 @@ console.log(iterator.next()); // { value: undefined, done: true }
 
 ```tsx
 // filterL with go
-
 import * as _ from 'streamlinejs/strict';
 import * as L from 'streamlinejs/lazy';
 

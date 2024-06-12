@@ -6,7 +6,10 @@ describe('atC', () => {
     const iter = [1, 2, 3, 4, 5];
     const index = 2;
     const result = atC(index)(iter);
+    const result2 = atC(index, iter);
+
     expect(result).toBe(3);
+    expect(result2).toBe(3);
   });
 
   it('index has minus value', () => {
