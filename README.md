@@ -13,6 +13,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 
 - [atC](#atc)
 - [chunkC](#chunkc)
+- [dropC](#dropc)
 - [filterC](#filterc)
 - [joinC](#joinc)
 - [mapC](#mapc)
@@ -80,7 +81,7 @@ pnpm install streamlinejs
 
 ### atC
 
-- 주어진 배열에서 주어진 인덱스에 있는 요소를 반환합니다.
+- 주어진 배열에서 주어진 인덱스에 있는 요소를 반환하는 커링함수.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -108,7 +109,7 @@ console.log(res); // 5
 
 ### chunkC
 
-- 주어진 크기로 배열을 나누어 청크를 반환합니다.
+- 주어진 크기로 배열을 나누어 청크를 반환하는 커링함수.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -134,9 +135,50 @@ const res = _.go(arr, C.chunkC(2));
 console.log(res); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
 ```
 
+### dropC
+
+- 처음 n개의 요소를 건너뛰고 나머지 요소를 반환하는 커링함수.
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const res = C.dropC(3)([1, 2, 3, 4, 5]);
+
+console.log(res); // [4, 5]
+```
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const res = C.dropC(10)([1, 2, 3, 4, 5]);
+
+console.log(res); // []
+```
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const res = C.dropC(-1)([1, 2, 3, 4, 5]);
+
+console.log(res); // [1, 2, 3, 4, 5]
+```
+
+```tsx
+// dropC with go
+
+import * as C from 'streamlinejs/curry';
+import * as _ from 'streamlinejs/strict';
+
+const arr = [1, 2, 3, 4, 5];
+
+const res = _.go<number[]>(arr, C.dropC(3));
+
+console.log(res); // [4, 5]
+```
+
 ### filterC
 
-- 주어진 조건을 만족하는 요소만을 반환합니다.
+- 주어진 조건을 만족하는 요소만을 반환하는 커링함수.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -163,7 +205,7 @@ _.go<number[]>(
 
 ### joinC
 
-- 배열의 모든 요소를 문자열로 변환하고, 주어진 구분자를 사용하여 결합합니다.
+- 배열의 모든 요소를 문자열로 변환하고, 주어진 구분자를 사용하여 결합하는 커링함수.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -191,7 +233,7 @@ console.log(res); // 'a=1&b=2&c=3'
 
 ### mapC
 
-- 각 요소에 주어진 함수를 적용하여 새로운 배열을 반환합니다.
+- 각 요소에 주어진 함수를 적용하여 새로운 배열을 반환하는 커링함수.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -217,7 +259,7 @@ _.go<number[]>(
 
 ### reduceC
 
-- 배열의 각 요소에 대해 주어진 함수를 적용하여 단일 누적 값을 반환합니다.
+- 배열의 각 요소에 대해 주어진 함수를 적용하여 단일 누적 값을 반환하는 커링함수.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -244,7 +286,7 @@ _.go<number>(
 
 ### takeC
 
-- 배열의 앞에서부터 지정된 개수만큼 요소를 반환합니다.
+- 배열의 앞에서부터 지정된 개수만큼 요소를 반환하는 커링함수.
 
 ```tsx
 import * as C from 'streamlinejs/curry';

@@ -38,4 +38,12 @@ describe('drop', () => {
     const iter = drop(2, '');
     expect(iter).toEqual([]);
   });
+
+  it('should return object value', () => {
+    const arr = [{ a: 1 }, { b: 2 }, { c: 3 }, { d: 4 }, { e: 5 }];
+
+    const drop6 = drop(2, arr);
+
+    expect(drop6).toEqual([{ c: 3 }, { d: 4 }, { e: 5 }]);
+  });
 });
