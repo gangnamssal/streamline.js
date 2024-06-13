@@ -23,6 +23,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 
 - [atL](#atl)
 - [chunkL](#chunkl)
+- [dropL](#dropl)
 - [filterL](#filterl)
 - [flatL](#flatl)
 - [mapL](#mapl)
@@ -322,6 +323,31 @@ import * as L from 'streamlinejs/lazy';
 const res = L.chunkL(2, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 console.log([...res]); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
+```
+
+### dropL
+
+- 처음 n개의 요소를 건너뛰고 나머지 요소를 반환하는 지연 함수입니다.
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+const res = L.dropL(2, [1, 2, 3, 4, 5]);
+
+console.log([...res]); // [3, 4, 5]
+```
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+const res = L.dropL(10, [1, 2, 3, 4, 5]);
+
+console.log([...res]); // []
+```
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+const res = L.dropL(-1, [1, 2, 3, 4, 5]);
+
+console.log([...res]); // [1, 2, 3, 4, 5]
 ```
 
 ### filterL
