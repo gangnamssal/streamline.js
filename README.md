@@ -36,6 +36,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [at](#at)
 - [chunk](#chunk)
 - [curry](#curry)
+- [drop](#drop)
 - [filter](#filter)
 - [go](#go)
 - [join](#join)
@@ -331,6 +332,7 @@ console.log([...res]); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
 
 ```tsx
 import * as L from 'streamlinejs/lazy';
+
 const res = L.dropL(2, [1, 2, 3, 4, 5]);
 
 console.log([...res]); // [3, 4, 5]
@@ -338,6 +340,7 @@ console.log([...res]); // [3, 4, 5]
 
 ```tsx
 import * as L from 'streamlinejs/lazy';
+
 const res = L.dropL(10, [1, 2, 3, 4, 5]);
 
 console.log([...res]); // []
@@ -345,9 +348,18 @@ console.log([...res]); // []
 
 ```tsx
 import * as L from 'streamlinejs/lazy';
+
 const res = L.dropL(-1, [1, 2, 3, 4, 5]);
 
 console.log([...res]); // [1, 2, 3, 4, 5]
+```
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const res = L.dropL(2, 'hello');
+
+console.log([...res]); // ['l', 'l', 'o']
 ```
 
 ### filterL
@@ -556,6 +568,42 @@ const twoMult = mult(2);
 console.log(twoMult(1)); // 2
 console.log(twoMult(2)); // 4
 console.log(twoMult(3)); // 6
+```
+
+### drop
+
+- 처음 n개의 요소를 건너뛰고 나머지 요소를 반환하는 함수입니다.
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.drop(2, [1, 2, 3, 4, 5]);
+
+console.log(res); // [3, 4, 5]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.drop(10, [1, 2, 3, 4, 5]);
+
+console.log(res); // []
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.drop(-1, [1, 2, 3, 4, 5]);
+
+console.log(res); // [1, 2, 3 ,4 ,5]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.drop(2, 'hello');
+
+console.log(res); // ['l', 'l', 'o']
 ```
 
 ### filter
