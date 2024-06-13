@@ -143,24 +143,30 @@ console.log(res); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
 import * as C from 'streamlinejs/curry';
 
 const res = C.dropC(3)([1, 2, 3, 4, 5]);
+const res2 = C.dropC(3, [1, 2, 3, 4, 5]);
 
 console.log(res); // [4, 5]
+console.log(res2); // [4, 5]
 ```
 
 ```tsx
 import * as C from 'streamlinejs/curry';
 
 const res = C.dropC(10)([1, 2, 3, 4, 5]);
+const res2 = C.dropC(10, [1, 2, 3, 4, 5]);
 
 console.log(res); // []
+console.log(res2); // []
 ```
 
 ```tsx
 import * as C from 'streamlinejs/curry';
 
 const res = C.dropC(-1)([1, 2, 3, 4, 5]);
+const res2 = C.dropC(-1, [1, 2, 3, 4, 5]);
 
 console.log(res); // [1, 2, 3, 4, 5]
+console.log(res2); // [1, 2, 3, 4, 5]
 ```
 
 ```tsx
