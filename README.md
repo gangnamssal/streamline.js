@@ -19,6 +19,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [mapC](#mapc)
 - [reduceC](#reducec)
 - [takeC](#takec)
+- [zipC](#zipc)
 
 [4.Lazy](#usage---lazy)
 
@@ -84,7 +85,7 @@ pnpm install streamlinejs
 
 ### atC
 
-- 주어진 배열에서 주어진 인덱스에 있는 요소를 반환하는 커링함수.
+- 주어진 배열에서 주어진 인덱스에 있는 요소를 반환하는 커링함수입니다.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -112,7 +113,7 @@ console.log(res); // 5
 
 ### chunkC
 
-- 주어진 크기로 배열을 나누어 청크를 반환하는 커링함수.
+- 주어진 크기로 배열을 나누어 청크를 반환하는 커링함수입니다.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -140,7 +141,7 @@ console.log(res); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
 
 ### dropC
 
-- 처음 n개의 요소를 건너뛰고 나머지 요소를 반환하는 커링함수.
+- 처음 n개의 요소를 건너뛰고 나머지 요소를 반환하는 커링함수입니다.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -187,7 +188,7 @@ console.log(res); // [4, 5]
 
 ### filterC
 
-- 주어진 조건을 만족하는 요소만을 반환하는 커링함수.
+- 주어진 조건을 만족하는 요소만을 반환하는 커링함수입니다.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -214,7 +215,7 @@ _.go<number[]>(
 
 ### joinC
 
-- 배열의 모든 요소를 문자열로 변환하고, 주어진 구분자를 사용하여 결합하는 커링함수.
+- 배열의 모든 요소를 문자열로 변환하고, 주어진 구분자를 사용하여 결합하는 커링함수입니다.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -242,7 +243,7 @@ console.log(res); // 'a=1&b=2&c=3'
 
 ### mapC
 
-- 각 요소에 주어진 함수를 적용하여 새로운 배열을 반환하는 커링함수.
+- 각 요소에 주어진 함수를 적용하여 새로운 배열을 반환하는 커링함수입니다.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -268,7 +269,7 @@ _.go<number[]>(
 
 ### reduceC
 
-- 배열의 각 요소에 대해 주어진 함수를 적용하여 단일 누적 값을 반환하는 커링함수.
+- 배열의 각 요소에 대해 주어진 함수를 적용하여 단일 누적 값을 반환하는 커링함수입니다.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -295,7 +296,7 @@ _.go<number>(
 
 ### takeC
 
-- 배열의 앞에서부터 지정된 개수만큼 요소를 반환하는 커링함수.
+- 배열의 앞에서부터 지정된 개수만큼 요소를 반환하는 커링함수입니다.
 
 ```tsx
 import * as C from 'streamlinejs/curry';
@@ -314,6 +315,34 @@ import * as _ from 'streamlinejs/strict';
 const arr = [1, 2, 3, 4, 5];
 
 _.go<number[]>(arr, C.takeC(3), console.log); // [1, 2, 3]
+```
+
+### zipC
+
+- 동일한 위치에 있는 요소들을 묶어서 튜플로 반환하는 커링함수입니다.
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const iter1 = [1, 2, 3];
+const iter2 = ['a', 'b', 'c'];
+
+const result = C.zipC(iter1)(iter2);
+
+console.log(result); // [[1, 'a'], [2, 'b'], [3, 'c']]
+```
+
+```tsx
+// zipC with go
+import * as C from 'streamlinejs/curry';
+import * as _ from 'streamlinejs/strict';
+
+const iter1 = [1, 2, 3];
+const iter2 = ['a', 'b', 'c'];
+
+const result = _.go(iter2, C.zipC(iter1));
+
+console.log(result); // [[1, 'a'], [2, 'b'], [3, 'c']]
 ```
 
 ## Usage - Lazy
@@ -576,7 +605,7 @@ console.log(iterator.next()); // { value: undefined, done: true }
 ```tsx
 import * as L from 'streamlinejs/lazy';
 
-const result = zipL([1, 2, 3], ['a', 'b', 'c']);
+const result = L.zipL([1, 2, 3], ['a', 'b', 'c']);
 
 console.log([...result]); // [[1, 'a'], [2, 'b'], [3, 'c']]
 ```
@@ -584,7 +613,7 @@ console.log([...result]); // [[1, 'a'], [2, 'b'], [3, 'c']]
 ```tsx
 import * as L from 'streamlinejs/lazy';
 
-const result = zipL([1, 2, 3], ['a', 'b']);
+const result = L.zipL([1, 2, 3], ['a', 'b']);
 
 console.log([...result]); // [[1, 'a'], [2, 'b']]
 ```
@@ -873,7 +902,7 @@ _.go(_.range(1, 10), arr => _.takeAll(arr), console.log); // [1, 2, 3, 4, 5, 6, 
 ```tsx
 import * as _ from 'streamlinejs/strict';
 
-const res = zip([1, 2, 3], ['a', 'b', 'c']);
+const res = _.zip([1, 2, 3], ['a', 'b', 'c']);
 
 console.log(res); // [[1, 'a'], [2, 'b'], [3, 'c']]
 ```
@@ -881,7 +910,7 @@ console.log(res); // [[1, 'a'], [2, 'b'], [3, 'c']]
 ```tsx
 import * as _ from 'streamlinejs/strict';
 
-const res = zip([1, 2, 3], ['a', 'b']);
+const res = _.zip([1, 2, 3], ['a', 'b']);
 
 console.log(res); // [[1, 'a'], [2, 'b']]
 ```
