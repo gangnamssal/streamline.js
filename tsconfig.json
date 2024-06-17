@@ -18,6 +18,6 @@
     "checkJs": true,
     "noEmitOnError": true
   },
-  "include": ["src/curry/index.ts", "src/lazy/index.ts", "src/strict/index.ts"],
+  "include": ["src/curry/index.ts", "src/lazy/index.ts", "src/strict/index.ts", "src/utils/index.ts"],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
