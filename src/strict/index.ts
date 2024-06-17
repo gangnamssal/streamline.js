@@ -4,6 +4,7 @@ export { default as concat } from './concat/concat';
 export { default as curry } from './curry/curry';
 export { default as drop } from './drop/drop';
 export { default as filter } from './filter/filter';
+export { default as find } from './find/find';
 export { default as flat } from './flat/flat';
 export { default as go } from './go/go';
 export { default as join } from './join/join';

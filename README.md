@@ -43,6 +43,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [curry](#curry)
 - [drop](#drop)
 - [filter](#filter)
+- [find](#find)
 - [flat](#flat)
 - [go](#go)
 - [join](#join)
@@ -807,6 +808,37 @@ const arr = [1, 2, 3] as const;
 const res = _.filter((a: number) => a > 1, arr);
 
 console.log(res); // [2, 3]
+```
+
+### find
+
+- 주어진 조건을 만족하는 첫번째 요소를 반환합니다.
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const isEven = (n: number) => n % 2 === 0;
+const result = _.find(isEven, [1, 2, 3, 4, 5, 6]);
+
+console.log(result); // 2
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const isVowel = (c: string) => 'aeiou'.includes(c);
+const result = _.find(isVowel, 'hello');
+
+console.log(result); // 'e'
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const isEven = (n: { value: number }) => n.value % 2 === 0;
+const result = find(isEven, [{ value: 1 }, { value: 2 }, { value: 3 }]);
+
+console.log(result); // { value: 2 }
 ```
 
 ### flat
