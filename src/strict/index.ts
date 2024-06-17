@@ -3,6 +3,7 @@ export { default as chunk } from './chunk/chunk';
 export { default as concat } from './concat/concat';
 export { default as curry } from './curry/curry';
 export { default as drop } from './drop/drop';
+export { default as every } from './every/every';
 export { default as filter } from './filter/filter';
 export { default as find } from './find/find';
 export { default as findIndex } from './findIndex/findIndex';

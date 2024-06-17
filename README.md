@@ -45,6 +45,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [concat](#concat)
 - [curry](#curry)
 - [drop](#drop)
+- [every](#every)
 - [filter](#filter)
 - [find](#find)
 - [findIndex](#findindex)
@@ -900,6 +901,30 @@ import * as _ from 'streamlinejs/strict';
 const res = _.drop(2, 'hello');
 
 console.log(res); // ['l', 'l', 'o']
+```
+
+### every
+
+- 이터러블의 모든 요소가 주어진 조건을 만족하는지 확인하는 함수
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const array = [1, 2, 3, 4, 5];
+
+const result = _.every((element: number) => element % 2 !== 0, array);
+
+console.log(result); // false
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const array = [1, 2, 3, 4, 5];
+
+const result = _.every((element: number) => element <= 5, array);
+
+console.log(result); // true
 ```
 
 ### filter
