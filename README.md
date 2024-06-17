@@ -110,7 +110,7 @@ import * as _ from 'streamlinejs/strict';
 import * as C from 'streamlinejs/curry';
 
 const arr = [1, 2, 3, 4, 5];
-const res = _.go<number>(arr, atC(-1));
+const res = _.go<number>(arr, C.atC(-1));
 
 console.log(res); // 5
 ```
@@ -289,7 +289,7 @@ console.log(result); // 2
 ```tsx
 import * as C from 'streamlinejs/curry';
 
-const result = joinC('-', [1, 2, 3]);
+const result = C.joinC('-', [1, 2, 3]);
 
 console.log(result); // '1-2-3'
 ```
@@ -674,7 +674,7 @@ console.log(iterator.next()); // { value: undefined, done: true }
 ```tsx
 import * as L from 'streamlinejs/lazy';
 
-const result = zipL([1, 2, 3], ['a', 'b', 'c']);
+const result = L.zipL([1, 2, 3], ['a', 'b', 'c']);
 const iterator = result[Symbol.iterator]();
 
 console.log(iterator.next()); // { value: [1, 'a'], done: false }
@@ -721,7 +721,7 @@ console.log(result); // 3
 import * as _ from 'streamlinejs/strict';
 
 const arr = [1, 2, 3, 4, 5];
-const res = go<number>(arr, arr => at(-1, arr));
+const res = _.go<number>(arr, arr => _.at(-1, arr));
 
 console.log(res); // 5
 ```
@@ -867,7 +867,7 @@ console.log(result); // 'e'
 import * as _ from 'streamlinejs/strict';
 
 const isEven = (n: { value: number }) => n.value % 2 === 0;
-const result = find(isEven, [{ value: 1 }, { value: 2 }, { value: 3 }]);
+const result = _.find(isEven, [{ value: 1 }, { value: 2 }, { value: 3 }]);
 
 console.log(result); // { value: 2 }
 ```
