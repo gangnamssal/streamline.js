@@ -605,6 +605,18 @@ console.log(iterator.next()); // { value: undefined, done: true }
 ```tsx
 import * as L from 'streamlinejs/lazy';
 
+const result = zipL([1, 2, 3], ['a', 'b', 'c']);
+const iterator = result[Symbol.iterator]();
+
+console.log(iterator.next()); // { value: [1, 'a'], done: false }
+console.log(iterator.next()); // { value: [2, 'b'], done: false }
+console.log(iterator.next()); // { value: [3, 'c'], done: false }
+console.log(iterator.next()); // { value: undefined, done: true }
+```
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
 const result = L.zipL([1, 2, 3], ['a', 'b', 'c']);
 
 console.log([...result]); // [[1, 'a'], [2, 'b'], [3, 'c']]

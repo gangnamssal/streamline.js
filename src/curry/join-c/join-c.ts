@@ -1,4 +1,5 @@
-import { curry, join } from '../../strict';
+import join from '../../strict/join/join';
+import curry from '../../strict/curry/curry';
 
 const joinC = curry(join);
 

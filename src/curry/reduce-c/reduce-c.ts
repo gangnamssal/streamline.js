@@ -1,4 +1,5 @@
-import { curry, reduce } from '../../strict';
+import curry from '../../strict/curry/curry';
+import reduce from '../../strict/reduce/reduce';
 
 const reduceC = curry(reduce);
 
