@@ -38,6 +38,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 
 - [at](#at)
 - [chunk](#chunk)
+- [concat](#concat)
 - [curry](#curry)
 - [drop](#drop)
 - [filter](#filter)
@@ -667,6 +668,43 @@ import * as _ from 'streamlinejs/strict';
 const res = _.chunk(2, [1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
 console.log(res); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
+```
+
+### concat
+
+- 주어진 두 이터러블을 하나로 결합합니다.
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const iter1 = [1, 2, 3];
+const iter2 = [4, 5, 6];
+
+const result = _.concat(iter1, iter2);
+
+console.log(result); // [1, 2, 3, 4, 5, 6]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const iter1 = 'hello';
+const iter2 = 'world';
+
+const result = _.concat(iter1, iter2);
+
+console.log(result); // ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const iter1 = [1, 2, 3];
+const iter2 = 'world';
+
+const result = _.concat(iter1, iter2);
+
+console.log(result); // [1, 2, 3, 'w', 'o', 'r', 'l', 'd']
 ```
 
 ### curry
