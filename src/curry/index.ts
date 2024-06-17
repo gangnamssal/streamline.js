@@ -3,6 +3,7 @@ export { default as chunkC } from './chunk-c/chunk-c';
 export { default as concatC } from './concat-c/concat-c';
 export { default as dropC } from './drop-c/drop-c';
 export { default as filterC } from './filter-c/filter-c';
+export { default as findC } from './find-c/find-c';
 export { default as joinC } from './join-c/join-c';
 export { default as mapC } from './map-c/map-c';
 export { default as reduceC } from './reduce-c/reduce-c';

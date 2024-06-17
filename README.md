@@ -16,6 +16,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [concatC](#concatc)
 - [dropC](#dropc)
 - [filterC](#filterc)
+- [findC](#findc)
 - [joinC](#joinc)
 - [mapC](#mapc)
 - [reduceC](#reducec)
@@ -249,6 +250,36 @@ _.go<number[]>(
   C.filterC((x: number) => x % 2 === 0),
   console.log, // [2, 4]
 );
+```
+
+### findC
+
+- 주어진 조건을 만족하는 첫번째 요소를 반환하는 커링함수입니다.
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const arr = [1, 2, 3, 4, 5];
+const isEven = (x: number) => x % 2 === 0;
+
+const result = C.findC(isEven, arr);
+const result2 = C.findC(isEven)(arr);
+
+console.log(result); // 2
+console.log(result2); // 2
+```
+
+```tsx
+// findC with go
+import * as C from 'streamlinejs/curry';
+import * as _ from 'streamlinejs/strict';
+
+const arr = [1, 2, 3, 4, 5];
+const isEven = (x: number) => x % 2 === 0;
+
+const result = _.go<number>(arr, C.findC(isEven));
+
+console.log(result); // 2
 ```
 
 ### joinC
