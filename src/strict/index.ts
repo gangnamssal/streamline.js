@@ -12,3 +12,4 @@ export { default as range } from './range/range';
 export { default as reduce } from './reduce/reduce';
 export { default as take } from './take/take';
 export { default as takeAll } from './takeAll/takeAll';
+export { default as zip } from './zip/zip';

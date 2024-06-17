@@ -40,6 +40,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [curry](#curry)
 - [drop](#drop)
 - [filter](#filter)
+- [flat](#flat)
 - [go](#go)
 - [join](#join)
 - [map](#map)
@@ -48,6 +49,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [reduce](#reduce)
 - [take](#take)
 - [takeAll](#takeall)
+- [zip](#zip)
 
 [6.License](#license)
 
@@ -692,6 +694,28 @@ const res = _.filter((a: number) => a > 1, arr);
 console.log(res); // [2, 3]
 ```
 
+### flat
+
+- 중첩된 배열을 평탄화하여 단일 배열로 만듭니다.
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.flat([[], [[]], [[], []], [[], 1], [[2], []], [[], [3]], []]);
+
+console.log(res); // [1, 2, 3]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const arr = [[1], [2, 3], [4, 5, 6]];
+
+const res = _.go(arr, _.flat);
+
+console.log(res); // [1, 2, 3, 4, 5, 6]
+```
+
 ### go
 
 - 함수들을 조합하여 복잡한 로직을 단순하게 구현할 수 있습니다.
@@ -842,26 +866,24 @@ import * as _ from 'streamlinejs/strict';
 _.go(_.range(1, 10), arr => _.takeAll(arr), console.log); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-### flat
+### zip
 
-- 중첩된 배열을 평탄화하여 단일 배열로 만듭니다.
+- 동일한 위치에 있는 요소들을 묶어서 튜플로 반환합니다.
 
 ```tsx
 import * as _ from 'streamlinejs/strict';
 
-const res = _.flat([[], [[]], [[], []], [[], 1], [[2], []], [[], [3]], []]);
+const res = zip([1, 2, 3], ['a', 'b', 'c']);
 
-console.log(res); // [1, 2, 3]
+console.log(res); // [[1, 'a'], [2, 'b'], [3, 'c']]
 ```
 
 ```tsx
 import * as _ from 'streamlinejs/strict';
 
-const arr = [[1], [2, 3], [4, 5, 6]];
+const res = zip([1, 2, 3], ['a', 'b']);
 
-const res = _.go(arr, _.flat);
-
-console.log(res); // [1, 2, 3, 4, 5, 6]
+console.log(res); // [[1, 'a'], [2, 'b']]
 ```
 
 ## License
