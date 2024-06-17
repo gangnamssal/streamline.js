@@ -140,6 +140,41 @@ const res = _.go(arr, C.chunkC(2));
 console.log(res); // [[1, 2], [3, 4], [5, 6], [7, 8], [9]]
 ```
 
+### concatC
+
+- 두 이터러블을 받은 뒤 결합하는 커링함수입니다.
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const iter1 = [1, 2, 3];
+const iter2 = [4, 5, 6];
+
+const result = C.concatC(iter1)(iter2);
+
+console.log(result); // [1, 2, 3, 4, 5, 6]
+```
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const iter1 = [1, 2, 3];
+const iter2 = [4, 5, 6];
+
+const result = C.concatC(iter1, iter2);
+
+console.log(result); // [1, 2, 3, 4, 5, 6]
+```
+
+```tsx
+import * as C from 'streamlinejs/curry';
+import * as _ from 'streamlinejs/strict';
+
+const result = _.go(iter2, C.concatC(iter1));
+
+console.log(result); // [1, 2, 3, 4, 5, 6]
+```
+
 ### dropC
 
 - 처음 n개의 요소를 건너뛰고 나머지 요소를 반환하는 커링함수입니다.
