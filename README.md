@@ -17,6 +17,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [dropC](#dropc)
 - [filterC](#filterc)
 - [findC](#findc)
+- [findIndexC](#findindexc)
 - [joinC](#joinc)
 - [mapC](#mapc)
 - [reduceC](#reducec)
@@ -281,6 +282,38 @@ const isEven = (x: number) => x % 2 === 0;
 const result = _.go<number>(arr, C.findC(isEven));
 
 console.log(result); // 2
+```
+
+### findIndexC
+
+- 이터러블에서 주어진 조건을 만족하는 첫 번째 요소의 인덱스를 반환하는 커링함수입니다.
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const arr = [1, 2, 3, 4, 5];
+const result = C.findIndexC(4, arr);
+
+console.log(result); // 3
+```
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const arr = [1, 2, 3, 4, 5];
+const result = C.findIndexC(6, arr);
+
+console.log(result); // -1
+```
+
+```tsx
+import * as C from 'streamlinejs/curry';
+import * as _ from 'streamlinejs/strict';
+
+const arr = [{ a: 1 }, { a: 2 }, { a: 3 }, { a: 4 }, { a: 5 }];
+const result = _.go(arr, C.findIndexC({ a: 4 }));
+
+console.log(result); // 3
 ```
 
 ### joinC
@@ -908,7 +941,7 @@ console.log(result); // 2
 import * as _ from 'streamlinejs/strict';
 
 const array = [{ id: 1 }, { id: 2 }, { id: 3 }];
-const result = findIndex({ id: 2 }, array);
+const result = _.findIndex({ id: 2 }, array);
 
 console.log(result); // 1
 ```
