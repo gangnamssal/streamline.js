@@ -21,6 +21,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [joinC](#joinc)
 - [mapC](#mapc)
 - [reduceC](#reducec)
+- [someC](#somec)
 - [takeC](#takec)
 - [zipC](#zipc)
 
@@ -396,6 +397,45 @@ _.go<number>(
   C.reduceC((a: number, b: number) => a + b),
   console.log, // 15
 );
+```
+
+### someC
+
+- 이터러블에서 적어도 하나의 요소가 주어진 조건을 만족하는지 확인하는 커링함수
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const array = [1, 2, 3, 4, 5];
+
+const result = C.someC((element: number) => element % 2 === 0, array);
+
+console.log(result); // true
+```
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const array = [1, 2, 3, 4, 5];
+
+const result = C.someC((element: number) => element % 2 === 0)(array);
+
+console.log(result); // true
+```
+
+```tsx
+// someC with go
+import * as C from 'streamlinejs/curry';
+import * as _ from 'streamlinejs/strict';
+
+const array = [1, 2, 3, 4, 5];
+
+const result = _.go(
+  array,
+  C.someC((element: number) => element >= 5),
+);
+
+console.log(result); // true
 ```
 
 ### takeC
