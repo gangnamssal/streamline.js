@@ -54,6 +54,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [pipe](#pipe)
 - [range](#range)
 - [reduce](#reduce)
+- [some](#some)
 - [take](#take)
 - [takeAll](#takeall)
 - [zip](#zip)
@@ -1096,6 +1097,38 @@ const iter = [1, 2, 3, 4, 5] as const;
 const result = _.reduce((acc: number, val: number) => acc + val, iter);
 
 console.log(result); // 15
+```
+
+### some
+
+- 이터러블에서 적어도 하나의 요소가 주어진 조건을 만족하는지 확인하는 함수
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const array = [1, 2, 3, 4, 5];
+const result = _.some(element => element % 2 === 0, array);
+
+console.log(result); // true
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const string = 'hello';
+const result = _.some(character => 'aeiou'.includes(character), string);
+
+console.log(result); // true
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const object = [{ value: 1 }, { value: 2 }, { value: 3 }, { value: 4 }, { value: 5 }];
+
+const result = _.some(({ value }) => value > 10, object);
+
+console.log(result); // false
 ```
 
 ### take
