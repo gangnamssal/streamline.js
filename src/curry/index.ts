@@ -2,6 +2,7 @@ export { default as atC } from './at-c/at-c';
 export { default as chunkC } from './chunk-c/chunk-c';
 export { default as concatC } from './concat-c/concat-c';
 export { default as dropC } from './drop-c/drop-c';
+export { default as everyC } from './every-c/every-c';
 export { default as filterC } from './filter-c/filter-c';
 export { default as findC } from './find-c/find-c';
 export { default as findIndexC } from './findIndex-c/findIndex-c';

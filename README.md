@@ -15,6 +15,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [chunkC](#chunkc)
 - [concatC](#concatc)
 - [dropC](#dropc)
+- [everyC](#everyc)
 - [filterC](#filterc)
 - [findC](#findc)
 - [findIndexC](#findindexc)
@@ -228,6 +229,32 @@ const arr = [1, 2, 3, 4, 5];
 const res = _.go<number[]>(arr, C.dropC(3));
 
 console.log(res); // [4, 5]
+```
+
+### everyC
+
+- 이터러블의 모든 요소가 주어진 조건을 만족하는지 확인하는 커링함수입니다.
+
+```tsx
+import * as C from 'streamlinejs/curry';
+
+const isEven = (n: number) => n % 2 === 0;
+const everyIsEven = C.everyC(isEven);
+
+console.log(everyIsEven([2, 4, 6, 8])); // true
+```
+
+```tsx
+// everyC with go
+import * as C from 'streamlinejs/curry';
+import * as _ from 'streamlinejs/strict';
+
+const arr = [1, 2, 3, 4, 5];
+const isEven = (n: number) => n % 2 === 0;
+
+const everyIsEven = _.go(arr, C.everyC(isEven));
+
+console.log(everyIsEven); // false
 ```
 
 ### filterC
