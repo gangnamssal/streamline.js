@@ -45,6 +45,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [drop](#drop)
 - [filter](#filter)
 - [find](#find)
+- [findIndex](#findindex)
 - [flat](#flat)
 - [go](#go)
 - [join](#join)
@@ -870,6 +871,46 @@ const isEven = (n: { value: number }) => n.value % 2 === 0;
 const result = _.find(isEven, [{ value: 1 }, { value: 2 }, { value: 3 }]);
 
 console.log(result); // { value: 2 }
+```
+
+### findIndex
+
+- 이터러블에서 주어진 조건을 만족하는 첫 번째 요소의 인덱스를 반환하는 함수
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const array = [5, 12, 8, 130, 44];
+const result = _.findIndex(8, array);
+
+console.log(result); // 2
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const array = [5, 12, 8, 130, 44];
+const result = _.findIndex(500, array);
+
+console.log(result); // -1
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const string = 'banana';
+const result = _.findIndex('n', string);
+
+console.log(result); // 2
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const array = [{ id: 1 }, { id: 2 }, { id: 3 }];
+const result = findIndex({ id: 2 }, array);
+
+console.log(result); // 1
 ```
 
 ### flat
