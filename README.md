@@ -31,6 +31,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [rangeL](#rangel)
 - [reduceL](#reducel)
 - [takeL](#takel)
+- [zipL](#zipl)
 
 [5.Strict](#usage---strict)
 
@@ -526,6 +527,7 @@ console.log([...L.rangeL(8, 3, -2)]); // [8, 6, 4]
 ### reduceL
 
 - 배열의 각 요소에 대해 주어진 함수를 지연 평가로 적용하여 단일 누적 값을 반환합니다.
+- 이터러블/이터레이터를 반환합니다.
 
 ```tsx
 import * as L from 'streamlinejs/lazy';
@@ -548,6 +550,7 @@ console.log(iterator.next()); // { value: undefined, done: true }
 ### takeL
 
 - 지연 평가로 배열의 앞에서부터 지정된 개수만큼 요소를 반환합니다.
+- 이터러블/이터레이터를 반환합니다.
 
 ```tsx
 import * as L from 'streamlinejs/lazy';
@@ -561,6 +564,27 @@ console.log([...res]); // [1, 2]
 console.log(iterator.next()); // { value: 1, done: false }
 console.log(iterator.next()); // { value: 2, done: false }
 console.log(iterator.next()); // { value: undefined, done: true }
+```
+
+### zipL
+
+- 지연 평가로 동일한 위치에 있는 요소들을 묶어서 튜플로 반환합니다.
+- 이터러블/이터레이터를 반환합니다.
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const result = zipL([1, 2, 3], ['a', 'b', 'c']);
+
+console.log([...result]); // [[1, 'a'], [2, 'b'], [3, 'c']]
+```
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const result = zipL([1, 2, 3], ['a', 'b']);
+
+console.log([...result]); // [[1, 'a'], [2, 'b']]
 ```
 
 ## Usage - Strict
