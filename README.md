@@ -13,6 +13,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 
 - [atC](#atc)
 - [chunkC](#chunkc)
+- [concatC](#concatc)
 - [dropC](#dropc)
 - [filterC](#filterc)
 - [joinC](#joinc)
