@@ -1,4 +1,4 @@
-import { rangeL } from '../../lazy';
+import rangeL from '../../lazy/range-l/range-l';
 import takeAll from '../takeAll/takeAll';
 
 export default function range(..._: number[]) {

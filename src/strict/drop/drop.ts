@@ -1,7 +1,8 @@
-import { dropL } from '../../lazy';
+import dropL from '../../lazy/drop-l/drop-l';
+import takeAll from '../takeAll/takeAll';
 
 function drop<T>(skip: number, iter: Iterable<T>) {
-  return [...dropL(skip, iter)];
+  return takeAll(dropL(skip, iter));
 }
 
 export default drop;
