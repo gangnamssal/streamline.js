@@ -3,3 +3,5 @@ export type KeyOfArray<T> = T extends [infer K, ...infer P] | readonly [infer K,
     ? K
     : K | KeyOfArray<P>
   : never;
+
+export type Arguments<T> = T extends (...args: infer A) => any ? A : never;

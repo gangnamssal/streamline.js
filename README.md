@@ -1223,6 +1223,54 @@ const result = _.some(({ value }) => value > 10, object);
 console.log(result); // false
 ```
 
+### st
+
+- strict 함수들을 chaining해서 사용할 수 있는 함수
+- st 내부에만 존재하는 to 함수 : 함수를 인자로 받아서 이터러블을 적용합니다.
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.st([1, 2, 3, 4, 5]).at(2); // 3
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.st([1, 2, 3, 4, 5]).chunk(2).iter; // [[1, 2], [3, 4], [5]]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.st([1, 2, 3, 4, 5]).chunk(2).iter; // [[1, 2], [3, 4], [5]]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.st([1, 2, 3, 4, 5]).to(iter => [...iter]); // [1, 2, 3, 4, 5]
+```
+
+```tsx
+import * as C from 'streamlinejs/curry';
+import * as _ from 'streamlinejs/strict';
+
+const res = _.st(_.range(1, 5))
+  .filter(v => v % 2 === 0)
+  .map(v => v * 2)
+  .to(C.mapC((v: number) => v)); // [4, 8]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const res = _.st(_.range(1, 5))
+  .filter(v => v % 2 === 0)
+  .map(v => v * 2)
+  .at(-1); // 8
+```
+
 ### take
 
 - 배열에서 첫 번째부터 지정된 개수만큼의 요소를 가져옵니다.
