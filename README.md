@@ -58,6 +58,7 @@ streamlinejs는 TypeScript를 사용한 함수형 프로그래밍 라이브러�
 - [range](#range)
 - [reduce](#reduce)
 - [some](#some)
+- [st](#st)
 - [take](#take)
 - [takeAll](#takeall)
 - [zip](#zip)
