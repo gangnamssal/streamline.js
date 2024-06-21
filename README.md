@@ -1232,12 +1232,6 @@ console.log(result); // false
 ```tsx
 import * as _ from 'streamlinejs/strict';
 
-const res = _.st([1, 2, 3, 4, 5]).at(2); // 3
-```
-
-```tsx
-import * as _ from 'streamlinejs/strict';
-
 const res = _.st([1, 2, 3, 4, 5]).chunk(2).iter; // [[1, 2], [3, 4], [5]]
 ```
 
@@ -1260,16 +1254,17 @@ import * as _ from 'streamlinejs/strict';
 const res = _.st(_.range(1, 5))
   .filter(v => v % 2 === 0)
   .map(v => v * 2)
-  .to(C.mapC((v: number) => v)); // [4, 8]
+  .to<number[]>(C.mapC((v: number) => v)); // [4, 8]
 ```
 
 ```tsx
+import * as C from 'streamlinejs/curry';
 import * as _ from 'streamlinejs/strict';
 
 const res = _.st(_.range(1, 5))
   .filter(v => v % 2 === 0)
   .map(v => v * 2)
-  .at(-1); // 8
+  .to<number>(C.atC(-1)); // 8
 ```
 
 ### take
