@@ -1,6 +1,6 @@
 import goPromise from '../../utils/goPromise/goPromise';
 
-function* mapL<T, R>(fn: (args: T) => R, iter: Iterable<T | PromiseLike<T>>) {
+function* mapL<T, R>(fn: (args: T) => R, iter: Iterable<T | Promise<T>>) {
   const iterator = iter[Symbol.iterator]();
 
   while (true) {

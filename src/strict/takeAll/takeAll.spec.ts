@@ -21,4 +21,21 @@ describe('takeAll', () => {
     const result = takeAll(iter);
     expect(result).toEqual([]);
   });
+  it('promise가 포함된 경우', () => {
+    const iter = [
+      Promise.resolve(1),
+      Promise.resolve(2),
+      Promise.resolve(3),
+      Promise.resolve(4),
+      Promise.resolve(5),
+    ];
+    const result = takeAll(iter);
+    expect(result).toEqual([
+      Promise.resolve(1),
+      Promise.resolve(2),
+      Promise.resolve(3),
+      Promise.resolve(4),
+      Promise.resolve(5),
+    ]);
+  });
 });

@@ -491,6 +491,22 @@ console.log(res); // [1, 2, 3]
 ```
 
 ```tsx
+// take with go, promise
+import * as _ from 'streamlinejs/strict';
+import * as C from 'streamlinejs/curry';
+
+const arr = [
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3),
+  Promise.resolve(4),
+  Promise.resolve(5),
+];
+
+const res = _.go<Promise<number[]>>(arr, C.takeC(2));
+```
+
+```tsx
 // takeC with go
 import * as C from 'streamlinejs/curry';
 import * as _ from 'streamlinejs/strict';
@@ -793,6 +809,13 @@ console.log([...res]); // [1, 2]
 console.log(iterator.next()); // { value: 1, done: false }
 console.log(iterator.next()); // { value: 2, done: false }
 console.log(iterator.next()); // { value: undefined, done: true }
+```
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const arr = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+const result = [...L.takeL(2, arr)]; // [Promise.resolve(1), Promise.resolve(2)]
 ```
 
 ### zipL
@@ -1105,6 +1128,18 @@ _.go<number>(
 ```tsx
 import * as _ from 'streamlinejs/strict';
 
+const res = _.go<Promise<number>>(
+  1,
+  a => a + 10,
+  a => Promise.resolve(a + 100),
+  a => a + 100,
+  a => a + 1000,
+); // Promise.resolve(1211)
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
 const arr = [1, 2, 3, 4, 5];
 
 const addAndMultiply = _.go<Record<string, number>>(arr, arr =>
@@ -1311,6 +1346,20 @@ import * as _ from 'streamlinejs/strict';
 _.go(_.range(1, 10), arr => _.take(5, arr), console.log); // [1, 2, 3, 4, 5]
 ```
 
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const iter = [
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3),
+  Promise.resolve(4),
+  Promise.resolve(5),
+];
+
+const result = _.take(3, iter); // [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)]
+```
+
 ### takeAll
 
 - 배열의 모든 요소를 그대로 반환합니다.
@@ -1319,6 +1368,20 @@ _.go(_.range(1, 10), arr => _.take(5, arr), console.log); // [1, 2, 3, 4, 5]
 import * as _ from 'streamlinejs/strict';
 
 _.go(_.range(1, 10), arr => _.takeAll(arr), console.log); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const iter = [
+  Promise.resolve(1),
+  Promise.resolve(2),
+  Promise.resolve(3),
+  Promise.resolve(4),
+  Promise.resolve(5),
+];
+
+const result = _.takeAll(iter); // [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3), Promise.resolve(4), Promise.resolve(5)]
 ```
 
 ### zip

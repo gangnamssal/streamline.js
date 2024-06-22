@@ -1,11 +1,11 @@
 import goPromise from '../../utils/goPromise/goPromise';
 
-// function reduce<T, Acc>(fn: (acc: Acc, value: T) => Acc, acc: Acc, iter: Iterable<T | PromiseLike<T>>): Acc;
-// function reduce<T, Acc>(fn: (acc: Acc, value: T) => Acc, acc: Iterable<T | PromiseLike<T>>): Acc;
+// function reduce<T, Acc>(fn: (acc: Acc, value: T) => Acc, acc: Acc, iter: Iterable<T | Promise<T>>): Acc;
+// function reduce<T, Acc>(fn: (acc: Acc, value: T) => Acc, acc: Iterable<T | Promise<T>>): Acc;
 // function reduce<T, Acc>(
-//   fn: (acc: Acc, value: T | PromiseLike<T>) => Acc,
-//   acc: Acc | Iterable<T | PromiseLike<T>>,
-//   iter?: Iterable<T | PromiseLike<T>>,
+//   fn: (acc: Acc, value: T | Promise<T>) => Acc,
+//   acc: Acc | Iterable<T | Promise<T>>,
+//   iter?: Iterable<T | Promise<T>>,
 // ): Acc {
 //   let result;
 

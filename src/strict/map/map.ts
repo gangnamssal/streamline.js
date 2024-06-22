@@ -2,8 +2,8 @@ import mapL from '../../lazy/map-l/map-l';
 import takeAll from '../takeAll/takeAll';
 
 function map<T, R>(fn: (args: T) => R, iter: Iterable<T>): R[];
-function map<T, R>(fn: (args: T) => R, iter: Iterable<PromiseLike<T>>): Promise<R>[];
-function map<T, R>(fn: (args: T) => R, iter: Iterable<T | PromiseLike<T>>) {
+function map<T, R>(fn: (args: T) => R, iter: Iterable<Promise<T>>): Promise<R>[];
+function map<T, R>(fn: (args: T) => R, iter: Iterable<T | Promise<T>>) {
   return takeAll(mapL(fn, iter));
 }
 

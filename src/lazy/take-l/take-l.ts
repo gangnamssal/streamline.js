@@ -1,4 +1,4 @@
-function* takeL<T>(limit: number, iter: Iterable<T>) {
+function* takeL<T>(limit: number, iter: Iterable<T | Promise<T>>) {
   const iterator = iter[Symbol.iterator]();
 
   while (limit-- > 0) {
@@ -6,7 +6,7 @@ function* takeL<T>(limit: number, iter: Iterable<T>) {
 
     if (done) break;
 
-    yield value;
+    yield value instanceof Promise ? value.then(value => value) : value;
   }
 }
 

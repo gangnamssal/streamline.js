@@ -17,4 +17,18 @@ describe('curryTake', () => {
 
     expect(res(arr)).toEqual([1, 2]);
   });
+
+  it('take with promise', () => {
+    const arr = [
+      Promise.resolve(1),
+      Promise.resolve(2),
+      Promise.resolve(3),
+      Promise.resolve(4),
+      Promise.resolve(5),
+    ];
+
+    const res = go<Promise<number[]>>(arr, takeC(2));
+
+    expect(res).toEqual([Promise.resolve(1), Promise.resolve(2)]);
+  });
 });

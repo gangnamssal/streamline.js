@@ -56,4 +56,11 @@ describe('takeL', () => {
       ['b', 2],
     ]);
   });
+
+  it('promise', () => {
+    const arr = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+    const result = [...takeL(2, arr)];
+
+    expect(result).toEqual([Promise.resolve(1), Promise.resolve(2)]);
+  });
 });
