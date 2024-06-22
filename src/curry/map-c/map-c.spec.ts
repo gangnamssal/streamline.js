@@ -16,7 +16,7 @@ describe('mapC', () => {
   it('map with pipe', () => {
     const arr = [1, 2, 3, 4, 5];
 
-    const res = pipe(mapC((a: number) => a + 1));
+    const res = pipe<number[]>(mapC((a: number) => a + 1));
 
     expect(res(arr)).toEqual([2, 3, 4, 5, 6]);
   });
