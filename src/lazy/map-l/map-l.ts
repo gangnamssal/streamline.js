@@ -1,4 +1,6 @@
-function* mapL<T, R>(fn: (args: T) => R, iter: Iterable<T>) {
+import goPromise from '../../utils/goPromise/goPromise';
+
+function* mapL<T, R>(fn: (args: T) => R, iter: Iterable<T | Promise<T>>) {
   const iterator = iter[Symbol.iterator]();
 
   while (true) {
@@ -6,7 +8,7 @@ function* mapL<T, R>(fn: (args: T) => R, iter: Iterable<T>) {
 
     if (done) break;
 
-    yield fn(value);
+    yield goPromise(value, fn);
   }
 }
 

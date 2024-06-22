@@ -388,6 +388,16 @@ console.log(res); // [2, 4, 6, 8, 10]
 ```
 
 ```tsx
+import * as C from 'streamlinejs/curry';
+
+const arr = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+
+const res = C.mapC((a: number) => a + 1, arr);
+
+console.log(res); // [Promise.resolve(2), Promise.resolve(3), Promise.resolve(4)]
+```
+
+```tsx
 // mapC with go
 import * as C from 'streamlinejs/curry';
 import * as _ from 'streamlinejs/strict';
@@ -687,6 +697,21 @@ console.log(iterator.next()); // { value: 6, done: false }
 console.log(iterator.next()); // { value: 8, done: false }
 console.log(iterator.next()); // { value: 10, done: false }
 console.log(iterator.next()); // { value: undefined, done: true }
+```
+
+```tsx
+import * as L from 'streamlinejs/lazy';
+
+const arr = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+const fn = (a: number) => a + 1;
+
+const res = L.mapL(fn, arr);
+const iterator = res[Symbol.iterator]();
+
+console.log(iterator.next()); // { value: Promise.resolve(2), done: false }
+console.log(iterator.next()); // { value: Promise.resolve(3), done: false }
+console.log(iterator.next()); // { value: Promise.resolve(4), done: false }
+console.log(iterator.next()); // { value: undefined done: true }
 ```
 
 ```tsx
@@ -1130,6 +1155,15 @@ const arr = [1, 2, 3] as const;
 const res = _.map((a: number) => a + 1, arr);
 
 console.log(res); // [2, 3, 4]
+```
+
+```tsx
+import * as _ from 'streamlinejs/strict';
+
+const arr = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+const result = map((a: number) => a + 1, arr);
+
+console.log(result); // [Promise.resolve(2), Promise.resolve(3), Promise.resolve(4)]
 ```
 
 ### pipe

@@ -20,4 +20,21 @@ describe('mapC', () => {
 
     expect(res(arr)).toEqual([2, 3, 4, 5, 6]);
   });
+
+  it('promise', () => {
+    const arr = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+
+    const res = mapC((a: number) => a + 1, arr);
+
+    expect(res).toEqual([Promise.resolve(2), Promise.resolve(3), Promise.resolve(4)]);
+  });
+
+  it('map with go with promise', () => {
+    const res = go(
+      [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)],
+      mapC((a: number) => a + 10),
+    );
+
+    expect(res).toEqual([Promise.resolve(11), Promise.resolve(12), Promise.resolve(13)]);
+  });
 });

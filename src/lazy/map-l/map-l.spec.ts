@@ -35,4 +35,27 @@ describe('map-l', () => {
       ['c', 4],
     ]);
   });
+
+  it('promise', () => {
+    const arr = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+    const fn = (a: number) => a + 1;
+
+    const res = mapL(fn, arr);
+
+    expect([...res]).toEqual([Promise.resolve(2), Promise.resolve(3), Promise.resolve(4)]);
+  });
+
+  it('promise', () => {
+    const arr = [Promise.resolve(1), Promise.resolve(2), Promise.resolve(3)];
+    const fn = (a: number) => a + 1;
+
+    const res = mapL(fn, arr);
+
+    const iterator = res[Symbol.iterator]();
+
+    expect(iterator.next()).toEqual({ value: Promise.resolve(2), done: false });
+    expect(iterator.next()).toEqual({ value: Promise.resolve(3), done: false });
+    expect(iterator.next()).toEqual({ value: Promise.resolve(4), done: false });
+    expect(iterator.next()).toEqual({ value: undefined, done: true });
+  });
 });
